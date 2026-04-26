@@ -1,36 +1,26 @@
 {
-  "task_id": "TASK-0001",
-  "title": "Build product card component",
-  "agent_role": "frontend_agent",
-  "source_spec": {
-    "id": "SPEC-0001",
-    "title": "Product Catalogue V1",
-    "path": "docs/specs/product-catalogue.md"
-  },
-  "must_read": [
-    "/ai/context.md",
-    "/ai/agent_rules.md",
-    "/docs/design_tokens.md",
-    "/docs/specs/product-catalogue.md"
-  ],
-  "allowed_paths": [
-    "/apps/web/**",
-    "/docs/design_tokens.md"
-  ],
-  "forbidden_paths": [
-    "/backend/**",
-    "/database/**",
-    "/.agentpm/agentpm.db"
+  "task_id": "TASK-P1-S0A",
+  "title": "Create CLAUDE.md authority file",
+  "agent": "CLAUDE_CODE",
+  "source_spec": "Section 7, Phase 1, Step 0",
+  "inputs": ["Docs/DecorStore_AgenticBuildSpec_v1.2.docx"],
+  "outputs": ["CLAUDE.md"],
+  "constraints": [
+    "Must include: brand name (Terres Studio), stack, persona, agent rules, current phase field",
+    "Phase field must be set to 1",
+    "Must reference /docs/commerce-boundaries.md for ORM rules",
+    "No production code in this file — authority/config only"
   ],
   "exit_criteria": [
-    "Product card renders image, title, price, and availability state.",
-    "Component follows documented DecorStore design tokens.",
-    "Loading and empty image states are handled without layout shift.",
-    "Relevant frontend tests or story examples are added if the app has an existing pattern."
+    "CLAUDE.md exists at repo root",
+    "File contains NEVER rules matching Section 4 verbatim",
+    "Phase field reads 'current_phase: 1'",
+    "Reviewed and approved by operator before any code is written"
   ],
-  "expected_outputs": [
-    "Implemented product card component under /apps/web/**.",
-    "Short summary of files changed and why.",
-    "Notes for any missing design or API assumptions."
-  ]
+  "escalation_triggers": [
+    "Spec section is ambiguous — halt and surface to operator",
+    "File already exists with conflicting content — do not overwrite without approval"
+  ],
+  "mcp_permissions": [],
+  "qa_gates": ["G2"]
 }

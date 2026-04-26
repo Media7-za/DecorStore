@@ -2,19 +2,19 @@
 
 AgentPM is a repo-local project management ledger for DecorStore. It stores projects, specs, tasks, agent runs, reviews, decisions, artifacts, and file touches in a local SQLite database at `.agentpm/agentpm.db`.
 
-AgentPM is not a Jira clone. It does not try to model teams, boards, sprints, notifications, permissions, or cross-company process. It is a small work ledger for one human coordinating AI agents inside this repository.
+AgentPM is not a Jira clone. It does not model teams, boards, sprints, notifications, permissions, or cross-company process. It is a small work ledger for one human coordinating AI agents inside this DecorStore workspace.
 
 ## Why It Exists
 
-AI agents need clear task boundaries. Humans need a durable record of what was asked, what an agent touched, what was reviewed, and why decisions were made. AgentPM gives DecorStore a local source of truth for that work without introducing a web app or external service.
+AI agents need clear task boundaries. Humans need a durable record of what was asked, what an agent touched, what was reviewed, and why decisions were made. AgentPM gives DecorStore a local source of truth for that work without introducing a web app, external PM tool, or SaaS dependency.
 
 The intended use is practical:
 
-- Keep specs and tasks close to the code.
+- Keep specs and tasks close to the project files.
 - Give agents explicit contracts before they edit files.
 - Record agent runs and touched files for review.
 - Capture important decisions while they are still fresh.
-- Keep GitHub Issues available for public or team-facing tracking if needed.
+- Keep external issue trackers out of this local solo workflow.
 
 ## What It Tracks
 
@@ -38,6 +38,19 @@ The intended use is practical:
 6. Move the task to review when work is ready.
 7. Record a review verdict.
 8. Approve and close the task when the human is satisfied.
+
+## Visibility (no web UI)
+
+These commands improve day-to-day use without a dashboard. They read the same local SQLite database as the rest of AgentPM.
+
+- `node scripts/agentpm.mjs next` — pick a suggested “next” task: unblocked (all `task_dependencies` point to `DONE` tasks), not `DONE`/`APPROVED`/`CANCELLED`/`BLOCKED`. Sorted by status (READY, ASSIGNED, RUNNING, BACKLOG, `REVIEW_REQUIRED`), inferred phase, dependency order, priority, and `created_at`. Prints prompt path, `task show` / `task start` / `run start` (for agent work) or an approve hint when the task is in review. Phase/epic is inferred from `metadata` (for example `phase_id`, `epic_id`) or, if absent, from the spec title, or the literal `unphased`.
+- `node scripts/agentpm.mjs blocked` — tasks with `BLOCKED` status, and tasks with incomplete dependencies (with blocking task IDs, titles, and statuses).
+- `node scripts/agentpm.mjs phase status` — per-phase task counts: total, `DONE`, `READY`, `RUNNING`, `REVIEW_REQUIRED`, `BLOCKED`, and percent complete (DONE / total in that phase). Other statuses are counted in the total but not shown in the columns.
+- `node scripts/agentpm.mjs prompts` — known agent roles and the matching file under `ai/prompts/`, and whether the file exists.
+- `node scripts/agentpm.mjs task contract TASK-0001` — print a single JSON object to stdout (suitable to paste with an agent prompt). No other terminal decoration.
+- `node scripts/agentpm.mjs task ready` — all `READY` tasks whose dependencies are satisfied, with recommended prompt path.
+
+**Typical day:** run `next`, then `task contract` for that id, then paste the JSON under the prompt from `prompts` for the assigned role.
 
 ## Status Transitions
 
@@ -117,7 +130,7 @@ node scripts/agentpm.mjs project create "DecorStore"
 Create a spec:
 
 ```sh
-node scripts/agentpm.mjs spec create --title "Product Catalogue V1" --path "docs/specs/product-catalogue.md"
+node scripts/agentpm.mjs spec create --title "Product Catalogue V1" --path "Docs/DecorStore_AgenticBuildSpec_v1.2.docx"
 ```
 
 Create and assign a task:
