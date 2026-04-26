@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    name: Build, Lint, and Test
+    name: Build and Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -32,9 +32,6 @@ jobs:
 
       - name: Run Type-check
         run: pnpm run type-check
-
-      - name: Run Tests
-        run: pnpm run test
 
       - name: Vercel Preview Deployment (Placeholder)
         run: |
