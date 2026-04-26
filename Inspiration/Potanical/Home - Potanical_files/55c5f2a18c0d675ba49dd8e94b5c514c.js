@@ -1156,26 +1156,24 @@
               id: n,
               role: "listbox",
               "aria-label": "Address suggestions",
-              children: e
-                .slice(0, 5)
-                .map((e, t) =>
-                  (0, m.jsx)(
-                    "li",
-                    {
-                      id: `suggestion-item-${r}-${t}`,
-                      className:
-                        "wc-block-components-address-autocomplete-suggestion" +
-                        (s === t ? " active" : ""),
-                      role: "option",
-                      tabIndex: -1,
-                      "aria-selected": s === t,
-                      onClick: () => o(e.id),
-                      style: { cursor: "pointer" },
-                      children: F(e?.label, e?.matchedSubstrings || []),
-                    },
-                    e.id,
-                  ),
+              children: e.slice(0, 5).map((e, t) =>
+                (0, m.jsx)(
+                  "li",
+                  {
+                    id: `suggestion-item-${r}-${t}`,
+                    className:
+                      "wc-block-components-address-autocomplete-suggestion" +
+                      (s === t ? " active" : ""),
+                    role: "option",
+                    tabIndex: -1,
+                    "aria-selected": s === t,
+                    onClick: () => o(e.id),
+                    style: { cursor: "pointer" },
+                    children: F(e?.label, e?.matchedSubstrings || []),
+                  },
+                  e.id,
                 ),
+              ),
             }),
             t
               ? (0, m.jsx)("div", {

@@ -663,26 +663,20 @@ var accountPopupTrigger = function () {
               (i = "none"),
               o.hasClass("ast-custom-header") || (i = n),
               o.parent().css("min-height", o.outerHeight()),
-              o
-                .addClass("ast-header-sticky-active")
-                .stop()
-                .css({
-                  "max-width": a,
-                  top: i,
-                  "padding-top": t.options.shrink.padding_top,
-                  "padding-bottom": t.options.shrink.padding_bottom,
-                }))
+              o.addClass("ast-header-sticky-active").stop().css({
+                "max-width": a,
+                top: i,
+                "padding-top": t.options.shrink.padding_top,
+                "padding-bottom": t.options.shrink.padding_bottom,
+              }))
             : (t.hasShrink(t, "stick"),
               o.parent().css("min-height", o.outerHeight()),
-              o
-                .addClass("ast-header-sticky-active")
-                .stop()
-                .css({
-                  "max-width": a,
-                  top: n,
-                  "padding-top": t.options.shrink.padding_top,
-                  "padding-bottom": t.options.shrink.padding_bottom,
-                })),
+              o.addClass("ast-header-sticky-active").stop().css({
+                "max-width": a,
+                top: n,
+                "padding-top": t.options.shrink.padding_top,
+                "padding-bottom": t.options.shrink.padding_bottom,
+              })),
           o.addClass("ast-sticky-shrunk").stop())
         : t.stickRelease(t)),
       "enabled" == (astraAddon.hook_sticky_footer || "") &&
@@ -905,14 +899,11 @@ var accountPopupTrigger = function () {
                   ? (a || o.parent().css("min-height", o.outerHeight()),
                     l.querySelector("body").classList.contains("fl-builder-edit") ||
                       o.addClass("ast-sticky-active").stop().css({ top: gutter }),
-                    o
-                      .addClass("ast-sticky-active")
-                      .stop()
-                      .css({
-                        "max-width": max_width,
-                        "padding-top": e.options.shrink.padding_top,
-                        "padding-bottom": e.options.shrink.padding_bottom,
-                      }),
+                    o.addClass("ast-sticky-active").stop().css({
+                      "max-width": max_width,
+                      "padding-top": e.options.shrink.padding_top,
+                      "padding-bottom": e.options.shrink.padding_bottom,
+                    }),
                     (o.hasClass("ast-stick-primary-below-wrapper") ||
                       o.hasClass("ast-primary-header")) &&
                       1 == astraAddon.header_above_stick &&

@@ -708,17 +708,15 @@
               '<div class="mfp-iframe-scaler"><div class="mfp-close ekit-popup-close"><i aria-hidden="true" class="${videoSettings.popupIcon.value}"></i></div><iframe class="mfp-iframe"  frameborder="0" allowfullscreen></iframe></div>',
             patterns: { youtube: { index: "https://youtube.com/", id: "v=", src: "%id%" } },
           }),
-          r
-            .find("video")
-            .mediaelementplayer({
-              features: i,
-              videoVolume: s.videoVolume,
-              startVolume: s.startVolume,
-              stretching: "responsive",
-              enableAutosize: !0,
-              videoWidth: "100%",
-              videoHeight: "100%",
-            }),
+          r.find("video").mediaelementplayer({
+            features: i,
+            videoVolume: s.videoVolume,
+            startVolume: s.startVolume,
+            stretching: "responsive",
+            enableAutosize: !0,
+            videoWidth: "100%",
+            videoHeight: "100%",
+          }),
           n.magnificPopup(c));
       }
       s = (r = t.find(".ekit-video-frame")).data("video-setting");
