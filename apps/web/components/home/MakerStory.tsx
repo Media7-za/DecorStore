@@ -1,4 +1,3 @@
-import { type ReactElement } from "react"
 import { CTAButton } from "@decorstore/ui"
 
 interface MakerStoryProps {
@@ -15,7 +14,7 @@ export function MakerStory({
   body,
   cta,
   image,
-}: MakerStoryProps): ReactElement {
+}: MakerStoryProps) {
   return (
     <section aria-label="Our makers" className="py-12 md:py-20">
       <div className="max-w-[1280px] mx-auto px-6">

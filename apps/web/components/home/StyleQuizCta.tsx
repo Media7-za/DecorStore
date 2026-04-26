@@ -1,4 +1,3 @@
-import { type ReactElement } from "react"
 import Link from "next/link"
 
 interface StyleQuizCtaProps {
@@ -11,7 +10,7 @@ export function StyleQuizCta({
   title,
   subtitle,
   cta,
-}: StyleQuizCtaProps): ReactElement {
+}: StyleQuizCtaProps) {
   return (
     <section
       aria-label="Style quiz"

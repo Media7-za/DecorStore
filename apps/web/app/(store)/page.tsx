@@ -1,4 +1,3 @@
-import { type ReactElement } from "react"
 import { EditorialHero } from "@/components/home/EditorialHero"
 import { FeaturedCollections } from "@/components/home/FeaturedCollections"
 import { ShopByRoom } from "@/components/home/ShopByRoom"
@@ -14,7 +13,7 @@ import {
   JOURNAL_POSTS,
 } from "@/lib/mock/homepage"
 
-export default function HomePage(): ReactElement {
+export default function HomePage() {
   return (
     <main>
       <EditorialHero

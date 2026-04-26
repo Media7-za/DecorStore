@@ -1,4 +1,4 @@
-import { type ReactElement } from "react"
+
 
 export interface SectionHeaderProps {
   title: string
@@ -10,7 +10,7 @@ export function SectionHeader({
   title,
   subtitle,
   className = "",
-}: SectionHeaderProps): ReactElement {
+}: SectionHeaderProps) {
   return (
     <div className={`mb-10 md:mb-14 ${className}`.trim()}>
       <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-ink leading-tight">

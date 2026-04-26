@@ -1,4 +1,4 @@
-import { type ReactElement } from "react"
+
 import Link from "next/link"
 
 export interface CollectionCardProps {
@@ -11,7 +11,7 @@ export function CollectionCard({
   title,
   image,
   href,
-}: CollectionCardProps): ReactElement {
+}: CollectionCardProps) {
   return (
     <Link
       href={href}

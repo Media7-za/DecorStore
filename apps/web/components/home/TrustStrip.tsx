@@ -1,4 +1,3 @@
-import { type ReactElement } from "react"
 interface TrustItem {
   icon: string
   label: string
@@ -12,7 +11,7 @@ const TRUST_ITEMS: TrustItem[] = [
   { icon: "↺", label: "Easy Returns", description: "30-day return policy" },
 ]
 
-export function TrustStrip(): ReactElement {
+export function TrustStrip() {
   return (
     <section aria-label="Trust indicators" className="py-10 border-t border-ink/10">
       <div className="max-w-[1280px] mx-auto px-6">
