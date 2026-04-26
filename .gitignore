@@ -1,1 +1,18 @@
+# AgentPM database (binary, not tracked)
 .agentpm/agentpm.db
+.agentpm/agentpm.db-shm
+.agentpm/agentpm.db-wal
+
+# Node
+node_modules/
+.next/
+dist/
+.turbo/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store

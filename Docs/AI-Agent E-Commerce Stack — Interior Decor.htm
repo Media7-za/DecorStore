@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)file:///Users/admin/Downloads/interior-decor-ecommerce-stack.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Agent E-Commerce Stack — Interior Decor</title>
+<link href="./AI-Agent E-Commerce Stack — Interior Decor_files/css2" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --sand: #E8DECE;
+    --clay: #C4A882;
+    --terracotta: #B5622A;
+    --charcoal: #2A2520;
+    --bark: #6B5744;
+    --moss: #4A5940;
+    --gold: #C8A84B;
+    --warm-white: #FAF7F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--charcoal);
+    color: var(--cream);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding: 60px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-right {
+    background: var(--clay);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(255,255,255,0.04) 30px,
+      rgba(255,255,255,0.04) 31px
+    );
+  }
+
+  .arch-shape {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 280px; height: 420px;
+    border-radius: 140px 140px 0 0;
+    background: var(--charcoal);
+    opacity: 0.15;
+  }
+
+  .arch-inner {
+    position: absolute;
+    bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    width: 180px; height: 280px;
+    border-radius: 90px 90px 0 0;
+    border: 2px solid rgba(245,240,232,0.3);
+  }
+
+  .label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .label::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--clay);
+  }
+
+  .hero-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--sand);
+    opacity: 0.7;
+    margin-top: 20px;
+    max-width: 380px;
+    line-height: 1.7;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+  .tag {
+    padding: 4px 12px;
+    border: 1px solid var(--clay);
+    border-radius: 2px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--clay);
+  }
+
+  /* ── SECTION WRAPPERS ── */
+  section {
+    padding: 80px 60px;
+  }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--bark), transparent);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3vw, 44px);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 16px;
+  }
+
+  /* ── AGENT PIPELINE ── */
+  .pipeline {
+    background: #1E1A16;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .phase-card {
+    background: #231F1A;
+    padding: 36px 28px;
+    position: relative;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s ease;
+    cursor: default;
+  }
+
+  .phase-card:hover {
+    border-top-color: var(--gold);
+  }
+
+  .phase-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: var(--bark);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .phase-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .phase-agent {
+    display: inline-block;
+    background: var(--terracotta);
+    color: var(--warm-white);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+  }
+
+  .phase-desc {
+    font-size: 12px;
+    color: var(--sand);
+    opacity: 0.75;
+    line-height: 1.65;
+  }
+
+  .cmd-block {
+    margin-top: 14px;
+    background: #0E0C0A;
+    border-left: 2px solid var(--moss);
+    padding: 10px 14px;
+    font-size: 11px;
+    color: #7EC8A4;
+    border-radius: 0 3px 3px 0;
+    overflow-x: auto;
+  }
+
+  /* ── TECH STACK ── */
+  .stack-section {
+    background: var(--charcoal);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .stack-card {
+    border: 1px solid #3A3028;
+    padding: 28px;
+    position: relative;
+    background: #231F1A;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .stack-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  }
+
+  .stack-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .stack-category {
+    font-family: 'Syne', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .stack-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .stack-why {
+    font-size: 12px;
+    color: var(--sand);
+    opacity: 0.7;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  .stack-badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .sbadge {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--bark);
+    color: var(--clay);
+  }
+
+  /* ── AGENT TOOLS ── */
+  .agents-section {
+    background: #1A1612;
+  }
+
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .agent-tile {
+    background: #1E1A16;
+    padding: 28px 24px;
+    border-bottom: 2px solid #3A3028;
+    transition: background 0.25s ease;
+  }
+  .agent-tile:hover { background: #252018; }
+
+  .agent-tool {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .agent-role {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 10px;
+  }
+
+  .agent-tasks {
+    list-style: none;
+    font-size: 11px;
+    color: var(--sand);
+    opacity: 0.7;
+  }
+  .agent-tasks li {
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+  }
+  .agent-tasks li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--moss);
+  }
+
+  /* ── WORKFLOW ── */
+  .workflow-section {
+    background: var(--clay);
+    color: var(--charcoal);
+  }
+  .workflow-section .section-label { color: var(--charcoal); opacity: 0.5; }
+  .workflow-section h2 { color: var(--charcoal); }
+  .workflow-section .section-label::after { background: linear-gradient(to right, rgba(42,37,32,0.3), transparent); }
+
+  .workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  .w-step {
+    padding: 32px 24px;
+    border-right: 1px solid rgba(42,37,32,0.2);
+    position: relative;
+  }
+  .w-step:last-child { border-right: none; }
+
+  .w-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(42,37,32,0.15);
+    line-height: 1;
+  }
+
+  .w-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--charcoal);
+    margin: 8px 0;
+  }
+
+  .w-desc {
+    font-size: 11px;
+    color: var(--charcoal);
+    opacity: 0.65;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0E0C0A;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #2A2520;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--clay);
+  }
+
+  .footer-note {
+    font-size: 10px;
+    color: var(--bark);
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.25s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.7s; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { height: 240px; }
+    section { padding: 60px 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .footer-note { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="label">Interior Decor · AI Agents · 2026</div>
+    <h1>CLI Agents<br>Building Your<br><em>Decor Store</em></h1>
+    <p class="hero-sub">A full tech stack plan for deploying CLI-driven AI agents to scaffold, populate, and operate a luxury interior decor e-commerce storefront — from init to launch.</p>
+    <div class="tag-row">
+      <span class="tag">Claude Code</span>
+      <span class="tag">Agentic</span>
+      <span class="tag">E-Commerce</span>
+      <span class="tag">2026 Stack</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="arch-shape"></div>
+    <div class="arch-inner"></div>
+  </div>
+</div>
+
+<!-- AGENT PIPELINE PHASES -->
+<section class="pipeline">
+  <div class="section-label">Phase Plan</div>
+  <h2>CLI Agent Build Pipeline</h2>
+  <p style="color:var(--sand);opacity:0.6;font-size:12px;max-width:560px;">Each phase is autonomously executed by a CLI agent. You give the directive — the agent scaffolds, codes, tests, and deploys.</p>
+
+  <div class="phase-grid">
+
+    <div class="phase-card">
+      <div class="phase-num">01</div>
+      <div class="phase-agent">Claude Code</div>
+      <div class="phase-title">Project Scaffold</div>
+      <div class="phase-desc">Agent initializes the monorepo, installs dependencies, configures environment files, and sets up CI/CD pipelines.</div>
+      <div class="cmd-block">$ claude "init interior decor store<br>&nbsp;&nbsp;Next.js + Medusa + Tailwind"</div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">02</div>
+      <div class="phase-agent">Claude Code</div>
+      <div class="phase-title">Storefront UI</div>
+      <div class="phase-desc">Agent generates product listing pages, room-scene hero sections, mood-board galleries, and cart / checkout flows.</div>
+      <div class="cmd-block">$ claude "build product catalog<br>&nbsp;&nbsp;with room visualizer UI"</div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">03</div>
+      <div class="phase-agent">Claude Code + MCP</div>
+      <div class="phase-title">Backend &amp; APIs</div>
+      <div class="phase-desc">Agent wires Medusa commerce engine, Stripe payments, inventory sync, and shipping integrations via MCP tool calls.</div>
+      <div class="cmd-block">$ claude "connect Stripe, Medusa<br>&nbsp;&nbsp;inventory + shipping APIs"</div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">04</div>
+      <div class="phase-agent">Claude Code</div>
+      <div class="phase-title">AI Features</div>
+      <div class="phase-desc">Agent integrates room style quiz, AI product recommendations, visual search, and a decor chatbot assistant.</div>
+      <div class="cmd-block">$ claude "add AI style quiz +<br>&nbsp;&nbsp;recommendation engine"</div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">05</div>
+      <div class="phase-agent">Claude Code</div>
+      <div class="phase-title">Content &amp; SEO</div>
+      <div class="phase-desc">Agent writes product descriptions, meta tags, alt texts, structured data schema, and a blog with interior design guides.</div>
+      <div class="cmd-block">$ claude "write SEO copy for<br>&nbsp;&nbsp;all 120 product listings"</div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-num">06</div>
+      <div class="phase-agent">Claude Code</div>
+      <div class="phase-title">Deploy &amp; Monitor</div>
+      <div class="phase-desc">Agent writes Terraform/Pulumi infra, configures Vercel + Fly.io, sets up Sentry error tracking and analytics dashboards.</div>
+      <div class="cmd-block">$ claude "deploy to Vercel +<br>&nbsp;&nbsp;setup observability stack"</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="stack-section">
+  <div class="section-label">Recommended Stack</div>
+  <h2>2026 AI-Native Tech Stack</h2>
+
+  <div class="stack-grid">
+
+    <div class="stack-card">
+      <span class="stack-icon">🤖</span>
+      <div class="stack-category">CLI AI Agent</div>
+      <div class="stack-name">Claude Code</div>
+      <div class="stack-why">Anthropic's agentic CLI. Reads your entire codebase, executes bash, writes/edits files, and runs multi-step plans autonomously. The orchestrator for all build phases.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Anthropic</span>
+        <span class="sbadge">Agentic</span>
+        <span class="sbadge">MCP-native</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">⚡</span>
+      <div class="stack-category">Frontend Framework</div>
+      <div class="stack-name">Next.js 15 + React 19</div>
+      <div class="stack-why">App Router, Server Components, and streaming SSR make product pages lightning-fast. Best-in-class SEO for commerce. Claude agents know it deeply.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Vercel</span>
+        <span class="sbadge">RSC</span>
+        <span class="sbadge">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🛒</span>
+      <div class="stack-category">Commerce Engine</div>
+      <div class="stack-name">Medusa.js v2</div>
+      <div class="stack-why">Open-source, headless commerce with a modular architecture. Claude agents can extend it with custom plugins. Full control over pricing, inventory, and fulfillment logic.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Headless</span>
+        <span class="sbadge">Open Source</span>
+        <span class="sbadge">Node.js</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🗄️</span>
+      <div class="stack-category">Database &amp; ORM</div>
+      <div class="stack-name">PostgreSQL + Prisma</div>
+      <div class="stack-why">Reliable relational DB for orders, products, and customers. Prisma gives Claude agents readable schema to query and migrate without manual SQL.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Prisma ORM</span>
+        <span class="sbadge">Supabase</span>
+        <span class="sbadge">Neon</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">💳</span>
+      <div class="stack-category">Payments</div>
+      <div class="stack-name">Stripe</div>
+      <div class="stack-why">Checkout, subscriptions, invoicing, and saved payment methods. Claude agent installs and wires Stripe via Medusa plugin in one session.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Checkout</span>
+        <span class="sbadge">Webhooks</span>
+        <span class="sbadge">Tax</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🧠</span>
+      <div class="stack-category">AI / Recommendations</div>
+      <div class="stack-name">Claude API + Embeddings</div>
+      <div class="stack-why">Power the style quiz, product recommendations, decor chatbot, and visual search. Semantic embeddings stored in pgvector for similarity search across the catalog.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">claude-sonnet-4</span>
+        <span class="sbadge">pgvector</span>
+        <span class="sbadge">RAG</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🖼️</span>
+      <div class="stack-category">Media &amp; Images</div>
+      <div class="stack-name">Cloudinary + Uploadthing</div>
+      <div class="stack-why">AI-powered image transformation for room scene crops, product zoom, responsive srcsets, and WebP delivery. Background removal for product shots built-in.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">CDN</span>
+        <span class="sbadge">AI Transforms</span>
+        <span class="sbadge">WebP</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🔍</span>
+      <div class="stack-category">Search</div>
+      <div class="stack-name">Algolia / Typesense</div>
+      <div class="stack-why">Instant search with faceted filtering by style, material, color palette, and room type. Typesense is open-source and self-hostable; Algolia for managed simplicity.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Facets</span>
+        <span class="sbadge">Instant</span>
+        <span class="sbadge">Vector</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">📦</span>
+      <div class="stack-category">Deployment</div>
+      <div class="stack-name">Vercel + Fly.io</div>
+      <div class="stack-why">Next.js frontend on Vercel for global edge. Medusa backend on Fly.io for persistent compute. Claude agent writes and applies Terraform configs for both.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Edge</span>
+        <span class="sbadge">Auto-scale</span>
+        <span class="sbadge">CI/CD</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">📊</span>
+      <div class="stack-category">Analytics &amp; Monitoring</div>
+      <div class="stack-name">PostHog + Sentry</div>
+      <div class="stack-why">PostHog for product analytics, funnels, and A/B tests. Sentry for error tracking and performance monitoring. Both have Claude-agent-friendly APIs.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Funnels</span>
+        <span class="sbadge">A/B Tests</span>
+        <span class="sbadge">Errors</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">📧</span>
+      <div class="stack-category">Email &amp; CRM</div>
+      <div class="stack-name">Resend + React Email</div>
+      <div class="stack-why">Transactional emails built in React — order confirmations, shipping updates, abandoned cart flows. Claude agent generates templates that match store branding.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">Transactional</span>
+        <span class="sbadge">React</span>
+        <span class="sbadge">Loops.so</span>
+      </div>
+    </div>
+
+    <div class="stack-card">
+      <span class="stack-icon">🔗</span>
+      <div class="stack-category">Agent Tooling</div>
+      <div class="stack-name">MCP Servers</div>
+      <div class="stack-why">Claude Code uses MCP to connect to GitHub, databases, Stripe, Sentry, and Vercel — letting agents read logs, deploy, and fix bugs without leaving the terminal.</div>
+      <div class="stack-badge-row">
+        <span class="sbadge">GitHub MCP</span>
+        <span class="sbadge">DB MCP</span>
+        <span class="sbadge">Vercel MCP</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AI AGENT TOOLS -->
+<section class="agents-section">
+  <div class="section-label">Agent Toolbox</div>
+  <h2>CLI Agents &amp; What They Own</h2>
+
+  <div class="agents-grid">
+
+    <div class="agent-tile">
+      <div class="agent-tool">Claude Code</div>
+      <div class="agent-role">Orchestrator Agent</div>
+      <ul class="agent-tasks">
+        <li>Full codebase awareness</li>
+        <li>Multi-file edits in one pass</li>
+        <li>Runs bash, git, npm scripts</li>
+        <li>Reads errors and self-corrects</li>
+      </ul>
+    </div>
+
+    <div class="agent-tile">
+      <div class="agent-tool">GitHub MCP</div>
+      <div class="agent-role">Version Control Agent</div>
+      <ul class="agent-tasks">
+        <li>Creates branches, PRs</li>
+        <li>Commits with context messages</li>
+        <li>Reads CI failures and fixes</li>
+        <li>Manages releases and tags</li>
+      </ul>
+    </div>
+
+    <div class="agent-tile">
+      <div class="agent-tool">Stripe MCP</div>
+      <div class="agent-role">Payments Agent</div>
+      <ul class="agent-tasks">
+        <li>Configure products + prices</li>
+        <li>Set up webhook endpoints</li>
+        <li>Test checkout flows</li>
+        <li>Debug payment failures</li>
+      </ul>
+    </div>
+
+    <div class="agent-tile">
+      <div class="agent-tool">Vercel MCP</div>
+      <div class="agent-role">Deploy Agent</div>
+      <ul class="agent-tasks">
+        <li>Trigger deployments</li>
+        <li>Set env variables</li>
+        <li>Read build logs</li>
+        <li>Manage domains + DNS</li>
+      </ul>
+    </div>
+
+    <div class="agent-tile">
+      <div class="agent-tool">DB / Prisma MCP</div>
+      <div class="agent-role">Data Agent</div>
+      <ul class="agent-tasks">
+        <li>Run migrations</li>
+        <li>Seed product catalog</li>
+        <li>Query and fix data issues</li>
+        <li>Optimize slow queries</li>
+      </ul>
+    </div>
+
+    <div class="agent-tile">
+      <div class="agent-tool">Sentry MCP</div>
+      <div class="agent-role">Debug Agent</div>
+      <ul class="agent-tasks">
+        <li>Fetch error stack traces</li>
+        <li>Patch bugs autonomously</li>
+        <li>Monitor performance regressions</li>
+        <li>Close resolved issues</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section class="workflow-section">
+  <div class="section-label">Launch Workflow</div>
+  <h2>From Zero to Live Store</h2>
+
+  <div class="workflow-steps">
+    <div class="w-step">
+      <div class="w-num">01</div>
+      <div class="w-title">Brief the Agent</div>
+      <div class="w-desc">Write a CLAUDE.md with your store vision, brand palette, product categories, and target customer. This is the agent's north star.</div>
+    </div>
+    <div class="w-step">
+      <div class="w-num">02</div>
+      <div class="w-title">Run Phase 1–2</div>
+      <div class="w-desc">Agent scaffolds the Next.js + Medusa project and builds all storefront UI. Review and approve the visual output.</div>
+    </div>
+    <div class="w-step">
+      <div class="w-num">03</div>
+      <div class="w-title">Connect Services</div>
+      <div class="w-desc">Provide API keys for Stripe, Cloudinary, Algolia. Agent wires all integrations via MCP, tests end-to-end checkout.</div>
+    </div>
+    <div class="w-step">
+      <div class="w-num">04</div>
+      <div class="w-title">Populate Catalog</div>
+      <div class="w-desc">Give agent a CSV of products. It seeds the DB, generates AI descriptions, uploads images, and indexes search.</div>
+    </div>
+    <div class="w-step">
+      <div class="w-num">05</div>
+      <div class="w-title">Deploy &amp; Go Live</div>
+      <div class="w-desc">Agent deploys to Vercel + Fly.io, configures domain, sets up monitoring. Store is live and fully operational.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Decor Store · CLI Agent Plan</div>
+  <div class="footer-note">
+    Generated 2026 · Claude Code Agentic Stack<br>
+    Interior Decor E-Commerce Blueprint
+  </div>
+</footer>
+
+
+
+</body></html>

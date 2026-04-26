@@ -1,0 +1,89 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [pgvector(map: "vector")]
+}
+
+model StyleProfile {
+  id                String   @id @default(cuid())
+  medusaCustomerId  String   @unique
+  quizAnswers       Json
+  recommendedStyles String[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model RoomMoodBoard {
+  id               String   @id @default(cuid())
+  medusaCustomerId String
+  name             String
+  productIds       String[]
+  imageUrl         String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model ProductEmbedding {
+  id              String                      @id @default(cuid())
+  medusaProductId String                      @unique
+  embedding       Unsupported("vector(1536)")
+  model           String
+  createdAt       DateTime                    @default(now())
+  updatedAt       DateTime                    @updatedAt
+}
+
+model DecorPreference {
+  id               String   @id @default(cuid())
+  medusaCustomerId String   @unique
+  styleWeights     Json
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model BlogPost {
+  id             String      @id @default(cuid())
+  title          String
+  slug           String      @unique
+  body           String
+  featuredImage  String?
+  seoTitle       String?
+  seoDescription String?
+  publishedAt    DateTime?
+  authorId       String
+  author         BlogAuthor  @relation(fields: [authorId], references: [id])
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model BlogAuthor {
+  id        String     @id @default(cuid())
+  name      String
+  bio       String?
+  avatarUrl String?
+  posts     BlogPost[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model AgentAuditLog {
+  id           String   @id @default(cuid())
+  phase        String
+  command      String
+  status       String
+  errorMessage String?
+  durationMs   Int
+  createdAt    DateTime @default(now())
+}
+
+model SiteConfig {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

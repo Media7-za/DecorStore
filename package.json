@@ -1,0 +1,40 @@
+{
+  "name": "decorstore",
+  "private": true,
+  "description": "Editorial-first, AI-augmented e-commerce platform",
+  "scripts": {
+    "build": "pnpm --recursive run build",
+    "dev": "pnpm --recursive run dev",
+    "lint": "eslint . --fix",
+    "format": "prettier --write .",
+    "test": "pnpm --recursive run test",
+    "type-check": "pnpm --recursive exec tsc --noEmit",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.59.0",
+    "@typescript-eslint/parser": "^8.59.0",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.15",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "typescript": "^5.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
