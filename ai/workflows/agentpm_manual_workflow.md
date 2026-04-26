@@ -85,20 +85,20 @@ node scripts/agentpm.mjs blocked
  node scripts/agentpm.mjs task contract TASK-0001
 ```
 
-2. In Claude/Cursor, use the **role prompt** + **paste the JSON** as the task contract.
-3. Instruct clearly:
+1. In Claude/Cursor, use the **role prompt** + **paste the JSON** as the task contract.
+2. Instruct clearly:
 
 - Execute **only** this task.
 - Obey `allowed_paths`, `forbidden_paths`, and `must_read`.
 - Return **files changed** and an **exit criteria checklist** (and stop if required context is missing — per the prompt’s rules).
 
-4. **Start a run** when the agent actually begins work (so the ledger matches reality):
+1. **Start a run** when the agent actually begins work (so the ledger matches reality):
 
 ```bash
  node scripts/agentpm.mjs run start TASK-0001 --agent frontend_agent
 ```
 
-5. As files are touched, log them (human or agent, depending on your discipline):
+1. As files are touched, log them (human or agent, depending on your discipline):
 
 ```bash
  node scripts/agentpm.mjs touch add TASK-0001 --path "path/to/file" --reason "short reason"
@@ -132,21 +132,21 @@ Typical sequence:
  node scripts/agentpm.mjs run complete RUN-0001
 ```
 
-2. **Mark review** if the work is ready for a human (or the QA result):
+1. **Mark review** if the work is ready for a human (or the QA result):
 
 ```bash
  node scripts/agentpm.mjs task review TASK-0001
 ```
 
-3. **If QA passed (and you accept):**
+1. **If QA passed (and you accept):**
 
 ```bash
  node scripts/agentpm.mjs task approve TASK-0001
  node scripts/agentpm.mjs task done TASK-0001
 ```
 
-4. **If QA failed:** open a follow-up task (PM prompt + `agentpm task create` / assign) with a clear title and new exit criteria; link it in chat and optionally in `metadata` if you use that.
-5. **Log decisions** in AgentPM when something was ambiguous and you resolved it:
+1. **If QA failed:** open a follow-up task (PM prompt + `agentpm task create` / assign) with a clear title and new exit criteria; link it in chat and optionally in `metadata` if you use that.
+2. **Log decisions** in AgentPM when something was ambiguous and you resolved it:
 
 ```bash
  node scripts/agentpm.mjs decision create --title "…" --body "…"
