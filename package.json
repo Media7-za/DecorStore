@@ -11,5 +11,11 @@
     "build": "pnpm --filter @decorstore/web build",
     "type-check": "pnpm -r --if-present run type-check",
     "lint": "pnpm --filter @decorstore/web lint"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "^19.0.0",
+      "@types/react-dom": "^19.0.0"
+    }
   }
 }

@@ -1,11 +1,11 @@
-import { type ReactElement, type ReactNode } from "react"
+import { type ReactNode } from "react"
 
 export interface CardProps {
   children: ReactNode
   className?: string
 }
 
-export function Card({ children, className = "" }: CardProps): ReactElement {
+export function Card({ children, className = "" }: CardProps) {
   return (
     <div className={`bg-white overflow-hidden ${className}`.trim()}>
       {children}

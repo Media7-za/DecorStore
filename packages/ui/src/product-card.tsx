@@ -1,4 +1,4 @@
-import { type ReactElement } from "react"
+
 
 export interface ProductCardProps {
   title: string
@@ -6,7 +6,7 @@ export interface ProductCardProps {
   image: { src: string; alt: string }
 }
 
-export function ProductCard({ title, price, image }: ProductCardProps): ReactElement {
+export function ProductCard({ title, price, image }: ProductCardProps) {
   return (
     <article className="group flex flex-col">
       <div className="relative aspect-square overflow-hidden bg-ink/5 mb-4">

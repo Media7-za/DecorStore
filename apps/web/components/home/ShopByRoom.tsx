@@ -1,4 +1,3 @@
-import { type ReactElement } from "react"
 import Link from "next/link"
 import { SectionHeader } from "@decorstore/ui"
 
@@ -13,7 +12,7 @@ interface ShopByRoomProps {
   rooms: Room[]
 }
 
-export function ShopByRoom({ rooms }: ShopByRoomProps): ReactElement {
+export function ShopByRoom({ rooms }: ShopByRoomProps) {
   return (
     <section aria-label="Shop by room" className="py-12 md:py-20">
       <div className="max-w-[1280px] mx-auto px-6">

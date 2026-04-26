@@ -1,4 +1,4 @@
-import { type ReactElement } from "react"
+
 
 type BadgeVariant = "default" | "accent"
 
@@ -12,7 +12,7 @@ const variantClasses: Record<BadgeVariant, string> = {
   accent: "bg-accent/15 text-accent",
 }
 
-export function Badge({ label, variant = "default" }: BadgeProps): ReactElement {
+export function Badge({ label, variant = "default" }: BadgeProps) {
   return (
     <span
       className={`inline-block px-2 py-0.5 text-xs font-semibold tracking-wide uppercase ${variantClasses[variant]}`}
