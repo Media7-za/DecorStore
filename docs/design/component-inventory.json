@@ -1,0 +1,46 @@
+{
+  "components": [
+    {
+      "name": "CTAButton",
+      "location": "packages/ui/src/button.tsx",
+      "props": ["label", "variant", "href", "onClick", "type", "disabled", "className"],
+      "rules": ["primary | secondary | ghost variants", "renders as Link when href provided", "renders as button otherwise"]
+    },
+    {
+      "name": "Badge",
+      "location": "packages/ui/src/badge.tsx",
+      "props": ["label", "variant"],
+      "rules": ["default | accent variants", "display only — no interaction"]
+    },
+    {
+      "name": "Card",
+      "location": "packages/ui/src/card.tsx",
+      "props": ["children", "className"],
+      "rules": ["generic container — no semantics of its own", "wrap in article or section at usage site"]
+    },
+    {
+      "name": "SectionHeader",
+      "location": "packages/ui/src/section-header.tsx",
+      "props": ["title", "subtitle", "className"],
+      "rules": ["consistent h2 spacing", "subtitle is optional"]
+    },
+    {
+      "name": "EditorialCard",
+      "location": "packages/ui/src/editorial-card.tsx",
+      "props": ["title", "description", "image", "cta", "badge"],
+      "rules": ["image-first layout", "geometric overlay optional", "no data fetching"]
+    },
+    {
+      "name": "ProductCard",
+      "location": "packages/ui/src/product-card.tsx",
+      "props": ["title", "price", "image"],
+      "rules": ["display only", "no add-to-cart logic", "no business logic"]
+    },
+    {
+      "name": "CollectionCard",
+      "location": "packages/ui/src/collection-card.tsx",
+      "props": ["title", "image", "href"],
+      "rules": ["entire card is clickable", "image covers full card", "title overlaid on image"]
+    }
+  ]
+}
