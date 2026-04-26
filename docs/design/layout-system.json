@@ -1,0 +1,28 @@
+{
+  "grid": {
+    "type": "12-column",
+    "max_width": "1280px",
+    "gutter": "24px"
+  },
+  "breakpoints": {
+    "mobile": "320px",
+    "tablet": "768px",
+    "desktop": "1280px",
+    "wide": "1920px"
+  },
+  "section_spacing": {
+    "mobile": "48px",
+    "desktop": "80px"
+  },
+  "container": {
+    "padding_x": "24px",
+    "centered": true
+  },
+  "rules": [
+    "mobile-first layout",
+    "stack vertically on mobile",
+    "use grid for desktop",
+    "no full-width text blocks beyond 80ch",
+    "maintain whitespace between sections"
+  ]
+}

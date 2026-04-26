@@ -1,0 +1,55 @@
+{
+  "page": "homepage",
+  "route": "apps/web/app/(store)/page.tsx",
+  "sections": [
+    {
+      "type": "EditorialHero",
+      "order": 1,
+      "component": "apps/web/components/home/EditorialHero.tsx",
+      "content": {
+        "title": "Design your space with intention",
+        "subtitle": "Handcrafted decor for modern South African homes",
+        "primaryCta": { "label": "Shop Collection", "href": "/collections" },
+        "secondaryCta": { "label": "Take Style Quiz", "href": "/style-quiz" }
+      }
+    },
+    {
+      "type": "FeaturedCollections",
+      "order": 2,
+      "component": "apps/web/components/home/FeaturedCollections.tsx",
+      "items": ["Living Room", "Bedroom", "Lighting", "Decor Objects"]
+    },
+    {
+      "type": "ShopByRoom",
+      "order": 3,
+      "component": "apps/web/components/home/ShopByRoom.tsx",
+      "items": ["Lounge", "Bedroom", "Dining", "Office"]
+    },
+    {
+      "type": "CuratedProducts",
+      "order": 4,
+      "component": "apps/web/components/home/CuratedProducts.tsx",
+      "label": "Selected for your space"
+    },
+    {
+      "type": "MakerStory",
+      "order": 5,
+      "component": "apps/web/components/home/MakerStory.tsx"
+    },
+    {
+      "type": "StyleQuizCTA",
+      "order": 6,
+      "component": "apps/web/components/home/StyleQuizCta.tsx"
+    },
+    {
+      "type": "JournalPreview",
+      "order": 7,
+      "component": "apps/web/components/home/JournalPreview.tsx"
+    },
+    {
+      "type": "TrustStrip",
+      "order": 8,
+      "component": "apps/web/components/home/TrustStrip.tsx"
+    }
+  ]
+}

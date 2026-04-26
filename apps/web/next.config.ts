@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  transpilePackages: ["@decorstore/ui"],
+  images: {
+    remotePatterns: [{ hostname: "placehold.co" }],
+  },
+}
 
-export default nextConfig;
+export default nextConfig

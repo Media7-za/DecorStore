@@ -1,0 +1,33 @@
+{
+  "brand": "DecorStore",
+  "style": "editorial minimal modern",
+  "tone": "calm, premium, design-conscious",
+  "colors": {
+    "primary": "#5B7F73",
+    "accent": "#C48A4A",
+    "background": "#F5F5F3",
+    "text_primary": "#111111",
+    "text_secondary": "#6B7280"
+  },
+  "tailwind_tokens": {
+    "brand": "#5B7F73",
+    "accent": "#C48A4A",
+    "canvas": "#F5F5F3",
+    "ink": "#111111",
+    "muted": "#6B7280"
+  },
+  "typography": {
+    "heading": "Inter",
+    "body": "Inter",
+    "scale": "modern editorial"
+  },
+  "spacing": "airy",
+  "shapes": {
+    "type": "soft geometric overlays",
+    "usage": "subtle background accents only"
+  },
+  "imagery": {
+    "style": "natural light, interior scenes, not cutouts",
+    "ratio": "4:5 and 1:1 mix"
+  }
+}

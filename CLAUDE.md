@@ -1,69 +1,85 @@
-# DecorStore Authority (CLAUDE.md)
+# DecorStore
 
-## Project Vision
+Hybrid Curated Store — handcrafted decor for modern South African homes.
 
-A luxury interior decor e-commerce storefront for **DecorStore**, built with a 2026 AI-native tech stack. Editorial-first, AI-augmented, and high-performance.
+## Stack
 
-## Tech Stack
+| Layer | Choice |
+|---|---|
+| Monorepo | pnpm workspaces |
+| Frontend | Next.js 15, App Router |
+| Language | TypeScript (strict) |
+| Styling | Tailwind CSS v4 |
+| UI Library | `packages/ui` |
+| Commerce | Medusa (Phase 3+) |
 
-- **Frontend**: Next.js 15 (App Router, React 19), Tailwind CSS v4, TypeScript
-- **Commerce**: Medusa.js v2 (Headless, plugin-extensible)
-- **Database**: PostgreSQL (Neon) with Prisma ORM (custom extensions)
-- **Search**: Typesense (faceted, instant)
-- **Media**: Cloudinary (AI transforms)
-- **Payments**: Stripe Checkout (ZAR support)
-- **AI**: Claude API + pgvector (embeddings, recommendations)
-- **Deployment**: Vercel (Frontend), Fly.io (Backend)
-- **Monitoring**: Sentry, PostHog
+## Rules
 
-## Agent Persona
+### TypeScript
+- Strict mode on, no `any`
+- Explicit return types on all exported functions
+- Interfaces for all prop types
 
-You are the **DecorStore Build Assistant**, an agentic AI specializing in full-stack e-commerce development. You operate with high discipline, following the AgentPM + Prompt Library system.
+### React / Next.js
+- React Server Components by default
+- `"use client"` only when interaction requires it (forms, state, browser APIs)
+- No component > 150 lines
+- No data fetching inside UI components — all data passed as props
 
-## Current State
+### Tailwind CSS v4
+- Tokens defined in `apps/web/app/globals.css` via `@theme`
+- Mobile-first responsive classes
+- No inline styles
 
-- **Phase**: 2 (Storefront UI)
-- **Active Task**: None
+### Components
+- All shared components live in `packages/ui/src/`
+- All page-specific section components live in `apps/web/components/`
+- Only build components listed in `docs/design/component-inventory.json`
+- All images require descriptive `alt` text
+- All interactive elements require visible label or `aria-label`
 
-## Agent Rules (Section 4 Verbatim)
+### Code Style
+- Named exports only — no default exports from components
+- No comments unless the WHY is non-obvious
+- No `// TODO`, `// FIXME`, or `// HACK` left in committed code
 
-### Always
+## Project Structure
 
-- Read CLAUDE.md and /docs/commerce-boundaries.md in full before starting any task
-- Write TypeScript — never .js files
-- Use React Server Components by default; add 'use client' only when strictly necessary
-- Write a unit or integration test alongside every new utility function
-- Keep components under 150 lines; extract sub-components if longer
-- Create a feature branch and commit with conventional commit messages after each subtask
-- Run pnpm build and fix all errors before marking a phase complete
-- Use zod for all external data validation (API responses, form inputs, env vars)
-- Add ARIA labels and alt text to every interactive element and image
-- Access Medusa commerce data through Medusa Store API, Admin API, modules, or services only
+```
+apps/
+  web/
+    app/
+      (store)/page.tsx      ← homepage (Phase 2)
+      globals.css           ← Tailwind v4 @theme tokens
+      layout.tsx
+    components/
+      home/                 ← homepage section components
+packages/
+  ui/
+    src/                    ← shared component library
+docs/
+  design/                   ← JSON design artifacts
+  ui/
+    homepage/               ← section-level blueprints
+scripts/                    ← AgentPM CLI
+.agentpm/                   ← AgentPM ledger
+```
 
-### Never
+## Phase 2 Boundaries
 
-- Add npm packages not listed in the approved stack
-- Hardcode API keys, secrets, or environment-specific URLs
-- Push commits directly to main — always open a PR
-- Use the any TypeScript type
-- Write inline SQL — all Prisma queries go through the Prisma client; all Medusa queries go through Medusa APIs
-- Modify .env files — create .env.example entries only
-- Delete or overwrite CLAUDE.md or any file in /docs/
-- Skip the QA gate at the end of a phase
-- Recreate Medusa-owned entities (products, variants, orders, carts, customers, inventory, payments, fulfillment) in Prisma
-- Query, mutate, join against, or create foreign keys to Medusa-owned database tables directly from Prisma
-- Create cross-ORM foreign keys — Medusa IDs must be stored as plain strings in Prisma, never as relational constraints
+- No backend logic in any UI component
+- No real data fetching — typed mock data in page files only
+- No new npm packages without explicit approval
+- No pages beyond homepage
+- No components outside the approved inventory
 
-## Operational Rules
+## Design Contracts
 
-1. **AgentPM Compliance**: No file edits without an active AgentPM task.
-2. **Contract Discipline**: Read the task contract (`node scripts/agentpm.mjs task contract <id>`) before starting.
-3. **Touch Logging**: Record every file modification using `node scripts/agentpm.mjs touch add --task <id> --file <path> --action <action>`.
-4. **Review Flow**: Move tasks to `review` status when exit criteria are met.
+Read before touching UI:
 
-## Command Reference
-
-- `node scripts/agentpm.mjs report` - Show project board
-- `node scripts/agentpm.mjs task list --agent architect_agent` - List tasks
-- `node scripts/agentpm.mjs task contract <id>` - View mission
-- `node scripts/agentpm.mjs task update <id> --status review` - Submit for review
+| File | Purpose |
+|---|---|
+| `docs/design/visual-direction.json` | Brand colours, typography, tone |
+| `docs/design/layout-system.json` | Grid, breakpoints, spacing |
+| `docs/design/component-inventory.json` | Approved component set and prop contracts |
+| `docs/design/homepage-blueprint.json` | Section order and content spec |
