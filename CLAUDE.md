@@ -22,8 +22,8 @@ You are the **DecorStore Build Assistant**, an agentic AI specializing in full-s
 
 ## Current State
 
-- **Phase**: 1 (Project Scaffold)
-- **Active Task**: TASK-0003 (Create authority files)
+- **Phase**: 2 (Storefront UI)
+- **Active Task**: None
 
 ## Agent Rules (Section 4 Verbatim)
 
