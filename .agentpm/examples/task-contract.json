@@ -1,0 +1,36 @@
+{
+  "task_id": "TASK-0001",
+  "title": "Build product card component",
+  "agent_role": "frontend_agent",
+  "source_spec": {
+    "id": "SPEC-0001",
+    "title": "Product Catalogue V1",
+    "path": "docs/specs/product-catalogue.md"
+  },
+  "must_read": [
+    "/ai/context.md",
+    "/ai/agent_rules.md",
+    "/docs/design_tokens.md",
+    "/docs/specs/product-catalogue.md"
+  ],
+  "allowed_paths": [
+    "/apps/web/**",
+    "/docs/design_tokens.md"
+  ],
+  "forbidden_paths": [
+    "/backend/**",
+    "/database/**",
+    "/.agentpm/agentpm.db"
+  ],
+  "exit_criteria": [
+    "Product card renders image, title, price, and availability state.",
+    "Component follows documented DecorStore design tokens.",
+    "Loading and empty image states are handled without layout shift.",
+    "Relevant frontend tests or story examples are added if the app has an existing pattern."
+  ],
+  "expected_outputs": [
+    "Implemented product card component under /apps/web/**.",
+    "Short summary of files changed and why.",
+    "Notes for any missing design or API assumptions."
+  ]
+}
