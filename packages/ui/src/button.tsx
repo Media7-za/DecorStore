@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import Link from "next/link"
 
 type Variant = "primary" | "secondary" | "ghost"
@@ -32,7 +33,7 @@ export function CTAButton({
   type = "button",
   disabled = false,
   className = "",
-}: CTAButtonProps): JSX.Element {
+}: CTAButtonProps): ReactElement {
   const classes = `${base} ${variantClasses[variant]} ${className}`.trim()
 
   if (href) {

@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import Link from "next/link"
 import { Badge } from "./badge"
 
@@ -15,7 +16,7 @@ export function EditorialCard({
   image,
   cta,
   badge,
-}: EditorialCardProps): JSX.Element {
+}: EditorialCardProps): ReactElement {
   return (
     <article className="group flex flex-col overflow-hidden">
       <div className="relative aspect-[4/5] overflow-hidden bg-ink/5">

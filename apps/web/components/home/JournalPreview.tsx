@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import { CTAButton, EditorialCard, SectionHeader } from "@decorstore/ui"
 
 export interface JournalPost {
@@ -13,7 +14,7 @@ interface JournalPreviewProps {
   posts: JournalPost[]
 }
 
-export function JournalPreview({ posts }: JournalPreviewProps): JSX.Element {
+export function JournalPreview({ posts }: JournalPreviewProps): ReactElement {
   return (
     <section aria-label="Journal" className="py-12 md:py-20">
       <div className="max-w-[1280px] mx-auto px-6">

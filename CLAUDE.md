@@ -68,10 +68,24 @@ scripts/                    ← AgentPM CLI
 ## Phase 2 Boundaries
 
 - No backend logic in any UI component
-- No real data fetching — typed mock data in page files only
+- No real data fetching — typed mock data in `apps/web/lib/mock/` only
 - No new npm packages without explicit approval
 - No pages beyond homepage
 - No components outside the approved inventory
+
+## Package Boundaries
+
+`packages/ui` is a **Next.js-first** component library. This is an intentional choice — keeping `Link` in the library avoids wrapper boilerplate in every consuming app and `next` is already a declared `peerDependency`.
+
+`packages/ui` **may** import from:
+- `react`
+- `next/link`
+- `next/image` (Phase 3+)
+
+`packages/ui` **must not** import from:
+- `next/navigation`, `next/headers`, or any server-only Next.js module
+- Any backend, database, or Medusa package
+- `apps/web` — dependency direction is one-way only
 
 ## Design Contracts
 

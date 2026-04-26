@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import { CollectionCard, SectionHeader } from "@decorstore/ui"
 
 export interface FeaturedCollection {
@@ -13,7 +14,7 @@ interface FeaturedCollectionsProps {
 
 export function FeaturedCollections({
   collections,
-}: FeaturedCollectionsProps): JSX.Element {
+}: FeaturedCollectionsProps): ReactElement {
   return (
     <section aria-label="Featured collections" className="py-12 md:py-20 bg-canvas">
       <div className="max-w-[1280px] mx-auto px-6">

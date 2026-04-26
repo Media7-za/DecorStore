@@ -3,16 +3,28 @@
 .agentpm/agentpm.db-shm
 .agentpm/agentpm.db-wal
 
-# Node
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
 .next/
+out/
 dist/
+build/
 .turbo/
 
-# Env
+# Generated files
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment & secrets
 .env
 .env.local
 .env.*.local
 
-# OS
+# IDE & OS
 .DS_Store
+*.swp
+*.swo

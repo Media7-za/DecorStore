@@ -1,10 +1,12 @@
+import { type ReactElement } from "react"
+
 export interface ProductCardProps {
   title: string
   price: string
   image: { src: string; alt: string }
 }
 
-export function ProductCard({ title, price, image }: ProductCardProps): JSX.Element {
+export function ProductCard({ title, price, image }: ProductCardProps): ReactElement {
   return (
     <article className="group flex flex-col">
       <div className="relative aspect-square overflow-hidden bg-ink/5 mb-4">

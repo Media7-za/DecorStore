@@ -1,4 +1,4 @@
-import type { ReactNode } from "react"
+import { type ReactElement, type ReactNode } from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
@@ -15,7 +15,7 @@ export default function RootLayout({
   children,
 }: {
   children: ReactNode
-}): JSX.Element {
+}): ReactElement {
   return (
     <html lang="en">
       <body className={`${inter.className} bg-canvas text-ink antialiased`}>

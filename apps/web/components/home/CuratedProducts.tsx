@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import { ProductCard, SectionHeader } from "@decorstore/ui"
 
 export interface CuratedProduct {
@@ -15,7 +16,7 @@ interface CuratedProductsProps {
 export function CuratedProducts({
   label,
   products,
-}: CuratedProductsProps): JSX.Element {
+}: CuratedProductsProps): ReactElement {
   return (
     <section aria-label={label} className="py-12 md:py-20 bg-canvas">
       <div className="max-w-[1280px] mx-auto px-6">

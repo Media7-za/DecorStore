@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "lint": "next lint"
   },
   "dependencies": {
     "@decorstore/ui": "workspace:*",
@@ -19,6 +20,8 @@
     "@types/node": "^20.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "15.3.1",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.0.0"
   }

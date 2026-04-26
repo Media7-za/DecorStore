@@ -1,3 +1,4 @@
+import { type ReactElement } from "react"
 import { CTAButton } from "@decorstore/ui"
 
 interface EditorialHeroProps {
@@ -12,7 +13,7 @@ export function EditorialHero({
   subtitle,
   primaryCta,
   secondaryCta,
-}: EditorialHeroProps): JSX.Element {
+}: EditorialHeroProps): ReactElement {
   return (
     <section
       aria-label="Hero banner"
